@@ -21,4 +21,7 @@ public class OracleConnectionTest {
 			e.printStackTrace();
 		}
 	}
+	
+	// java.sql.sqlexception: 로케일을 인식할 수 없습니다. 
+	// Mac의 언어 및 지역 설정을 미국으로 변경 후 한국으로 복구하니 정상동작.
 }
