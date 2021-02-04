@@ -28,7 +28,7 @@ public class PropReadService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        // ...? 커밋했는데 잔디가 안심어진다... 어렵다 깃...
+        
 		return propArr;
 	}
 }
