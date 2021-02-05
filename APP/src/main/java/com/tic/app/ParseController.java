@@ -23,12 +23,13 @@ public class ParseController {
 		JSONArray result = newsAPIService.getNews(topic);
 		
 		for(Object i : result) {
-			//XXX 받아온 JSON데이터의 Description 한글 깨짐. 
+			//XXX 받아온 JSON데이터의 Description 한글 깨짐. -> 프로젝트의 인코딩 설정문제.
+			
 			System.out.println(i);
-			model.addAttribute("result", i);
 		}
+		model.addAttribute("result", result);
 		
-		return "redirect:/";
+		return "home";
 	}
 	
 }
