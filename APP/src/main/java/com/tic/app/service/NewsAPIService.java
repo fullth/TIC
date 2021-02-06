@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.json.JSONArray;
@@ -18,12 +19,13 @@ public class NewsAPIService {
 	@Autowired
 	PropReadService propReadService;
 
-	@SuppressWarnings("rawtypes")
-	public JSONArray getNews(String parse) {
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public List getNews(String parse) {
 
 		List getPropArr = propReadService.readProp();
 				
-		JSONArray result = null;
+		//JSONArray result = null;
+		List result = new ArrayList();
 
 		try {
 			// TODO Http ResponseCode별 처리 추가.
@@ -46,10 +48,20 @@ public class NewsAPIService {
 				response.append(inputLine);
 			}
 
-			JSONObject jsonObj = new JSONObject(response.toString());
-			JSONArray jsonArray = (JSONArray) jsonObj.get("items");
+			//JSONObject jsonObj = new JSONObject(response.toString());
+			//JSONArray jsonArray = (JSONArray) jsonObj.get("items");
 
-			result = jsonArray;
+			//result = jsonArray;
+			
+			JSONObject jsonObj = new JSONObject(response.toString());
+			JSONArray items = jsonObj.getJSONArray("items");
+			
+			for(int i = 0; i < items.length(); i++) {
+				JSONObject parseObj = items.getJSONObject(i);
+				String parseItems = parseObj.getString("originallink");
+				result.add(parseItems);
+				System.out.println("Originallink :: " + i + " :: " + parseItems);
+			}
 			
 			br.close();
 		} catch (Exception e) {
