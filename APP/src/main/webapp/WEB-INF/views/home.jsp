@@ -13,12 +13,21 @@
 	</form>
 	<% 	
 		List<Object> result = (List) request.getAttribute("result");
-		for(int i = 0; i < result.size(); i++) {
-			%> 
-			<a href="
-			<% out.println(result.get(i)); %>
-			"><% out.print(result.get(i)); %></a><br>
-		<% } %>
+		if(result != null) {			
+			for(int i = 0; i < result.size(); i++) {
+	%> 
+				<a href="
+				<% 
+					out.println(result.get(i)); 
+				%>
+				">
+				<% 
+					out.print(result.get(i)); 
+				%>
+				</a><br>
+			<% } 
+		}
+			%>
 	
 </body>
 </html>
