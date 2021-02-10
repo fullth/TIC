@@ -25,13 +25,10 @@ public class ParseController {
 		List<Object> resultList = new ArrayList<Object>();
 		
 		for(Object i : result) {
-			// 받아온 JSON데이터의 Description 한글 깨짐. -> 프로젝트의 인코딩 설정문제.
-			System.out.println(i);
 			resultList.add(i);
 		}
 		model.addAttribute("result", resultList);
 		
-		return "home";
-		// TODO main.jsp에 출력 및 링크 제목으로 기사 본문 요약 가져오기.
+		return "main";
 	}
 }
