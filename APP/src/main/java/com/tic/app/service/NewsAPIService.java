@@ -60,7 +60,6 @@ public class NewsAPIService {
 				JSONObject parseObj = items.getJSONObject(i);
 				String parseItems = parseObj.getString("originallink");
 				result.add(parseItems);
-				System.out.println("Originallink :: " + i + " :: " + parseItems);
 			}
 			
 			br.close();
