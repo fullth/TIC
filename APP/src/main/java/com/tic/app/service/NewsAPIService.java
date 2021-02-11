@@ -59,7 +59,10 @@ public class NewsAPIService {
 			for(int i = 0; i < items.length(); i++) {
 				JSONObject parseObj = items.getJSONObject(i);
 				String parseItems = parseObj.getString("originallink");
+				String parseItems2 = parseObj.getString("description");
 				result.add(parseItems);
+				result.add(parseItems2);
+				//TODO Change list to map.
 			}
 			
 			br.close();

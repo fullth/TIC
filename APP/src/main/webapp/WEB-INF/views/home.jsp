@@ -15,19 +15,18 @@
 		List<Object> result = (List) request.getAttribute("result");
 		if(result != null) {			
 			for(int i = 0; i < result.size(); i++) {
-	%> 
-				<a href="
-				<% 
-					out.println(result.get(i)); 
-				%>
-				">
-				<% 
+				String getLink = (String)result.get(i);
+				if(getLink.indexOf("https", 0) != -1){
+					out.print("<a href=\"");
+					result.get(i); 
+					out.print("\"</a><br>");
 					out.print(result.get(i)); 
-				%>
-				</a><br>
-			<% } 
+				} else {
+					out.print(result.get(i)); 
+				}
+			}
 		}
-			%>
+	%> 
 	
 </body>
 </html>
