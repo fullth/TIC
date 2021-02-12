@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Editorial by HTML5 UP</title>
+<title>fullth web</title>
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -23,7 +23,7 @@
 
 				<!-- Header -->
 				<header id="header">
-					<a href="index.html" class="logo"><strong>NEWS</strong></a>
+					<a href="/" class="logo"><strong>NEWS</strong></a>
 					<ul class="icons">
 						<li><a href="#" class="icon brands fa-twitter"><span
 								class="label">Twitter</span></a></li>
@@ -56,23 +56,26 @@
 								<input type="submit" name="topic" value="CHEVROLET">
 								<p></p>
 							</form>
-							<%
-								List<Object> result = (List) request.getAttribute("result");
-							if (result != null) {
-								for (int i = 0; i < result.size(); i++) {
-							%> 
-										<a href="
-										<%out.println(result.get(i));%>
-										">
-										<%
-											out.print(result.get(i));
-										%>
-										</a><br>
-									<%
-										}
+							<% 	
+								List<Object> titleList = (List) request.getAttribute("title"); 
+								List<Object> linkList = (List) request.getAttribute("link");
+							%>
+								<p>
+									<% 
+									if(titleList != null && linkList != null) {
+										for(int i = 1; i < linkList.size(); i++) {
+											out.print("<a href=");
+											out.print(linkList.get(i));
+											out.print("\">");
+											out.print(titleList.get(i));
+											out.print("</a>");
+											out.print("<br><br><br>");
+										}				
 									}
 									%>
+								</p>	
 						</p>
+<label><input type="radio"></input>ddd</label>
 						
 						<ul class="actions">
 							<li><a href="#" class="button big">Go to Top</a></li>

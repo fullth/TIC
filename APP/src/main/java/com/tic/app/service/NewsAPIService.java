@@ -6,7 +6,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -20,12 +22,14 @@ public class NewsAPIService {
 	PropReadService propReadService;
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public List getNews(String parse) {
+	public Map getNews(String parse) {
 
 		List getPropArr = propReadService.readProp();
 				
 		//JSONArray result = null;
-		List result = new ArrayList();
+		Map resultMap = new HashMap();
+		List parseTitle = new ArrayList();
+		List parseLink = new ArrayList();
 
 		try {
 			// TODO Http ResponseCode별 처리 추가.
@@ -58,18 +62,22 @@ public class NewsAPIService {
 			
 			for(int i = 0; i < items.length(); i++) {
 				JSONObject parseObj = items.getJSONObject(i);
-				String parseItems = parseObj.getString("originallink");
-				String parseItems2 = parseObj.getString("description");
-				result.add(parseItems);
-				result.add(parseItems2);
-				//TODO Change list to map.
+				
+				String getLink = parseObj.getString("originallink");
+				String getTitle = parseObj.getString("title");
+				
+				parseLink.add(getLink);
+				parseTitle.add(getTitle);
 			}
+			
+			resultMap.put("link", parseLink);
+			resultMap.put("title", parseTitle);
 			
 			br.close();
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 
-		return result;
+		return resultMap;
 	}
 }
