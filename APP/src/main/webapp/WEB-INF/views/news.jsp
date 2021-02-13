@@ -50,10 +50,13 @@
 						<p>
 							<form action="/getNews">
 							<!-- 검색 키워드 수정하기 -->
-								<input type="submit" name="topic" value="KIA">
-								<input type="submit" name="topic" value="HYUNDAI">
-								<input type="submit" name="topic" value="TESLA">
-								<input type="submit" name="topic" value="CHEVROLET">
+								<input type="submit" name="topic" value="기아 자동차 신모델">
+								<input type="submit" name="topic" value="현대 자동차 신모델">
+								<br>
+								<br>
+								<input type="submit" name="topic" value="테슬라 자동차 신모델 ">
+								<input type="submit" name="topic" value="쉐보레 자동차 신모델">
+								<input type="checkbox">
 								<p></p>
 							</form>
 							<% 	
@@ -64,10 +67,14 @@
 									<% 
 									if(titleList != null && linkList != null) {
 										for(int i = 1; i < linkList.size(); i++) {
+											out.print("<label>");
+											out.print(titleList.get(i));
+											out.print("<input type=\"radio\"> test");
+											out.print("</label>");
 											out.print("<a href=");
 											out.print(linkList.get(i));
 											out.print("\">");
-											out.print(titleList.get(i));
+											out.print(linkList.get(i));
 											out.print("</a>");
 											out.print("<br><br><br>");
 										}				
@@ -75,14 +82,11 @@
 									%>
 								</p>	
 						</p>
-<label><input type="radio"></input>ddd</label>
-						
 						<ul class="actions">
 							<li><a href="#" class="button big">Go to Top</a></li>
 						</ul>
 					</div>
-					<span class="image object"> <img src="https://images.unsplash.com/photo-1572191267783-5618f992aff5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2331&q=80"
-						alt="IMG NOT LOAD" />
+					<span class="image object"> <img src="https://images.unsplash.com/photo-1572191267783-5618f992aff5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2331&q=80" alt="IMG NOT LOAD" />
 					</span>
 				</section>
 

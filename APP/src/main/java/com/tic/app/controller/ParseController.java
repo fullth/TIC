@@ -59,6 +59,6 @@ public class ParseController {
 		model.addAttribute("title", titleList);
 		model.addAttribute("link", linkList);
 		
-		return "main";
+		return "news";
 	}
 }
