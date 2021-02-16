@@ -32,7 +32,7 @@ public class NewsAPIService {
 		List parseLink = new ArrayList();
 
 		try {
-			// TODO Http ResponseCode별 처리 추가.
+			// TODO Http ResponseCode�? 처리 추�?.
 			String text = URLEncoder.encode(parse, "UTF-8");
 			String apiURL = getPropArr.get(0) + "?query=" + text;
 			
