@@ -31,7 +31,7 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/homeController", method = RequestMethod.GET)
-	public String homeController(@RequestParam(value="homeController")String homeControl, Model model) {
+	public String homeController(@RequestParam(value="homeControl", required = false)String homeControl, Model model) {
 		
 		String returnPage = "";
 		
@@ -43,7 +43,7 @@ public class HomeController {
 			return "join";
 		} else if (homeControl == "GUEST") {
 			//TODO session processing.
-			return "news";
+			return "redirect:/news";
 		}
 		
 		System.out.println("RETURN PAGE :: "+returnPage);
