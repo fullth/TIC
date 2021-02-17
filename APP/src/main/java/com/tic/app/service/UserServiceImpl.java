@@ -6,11 +6,14 @@ import org.springframework.stereotype.Service;
 import com.tic.app.dao.UserDAO;
 import com.tic.app.model.UserVO;
 
-@Service
 public class UserServiceImpl implements UserService{
 
+	private final UserDAO userDAO;
+	
 	@Autowired
-	private UserDAO userDAO;
+	public UserServiceImpl(UserDAO userDAO) {
+		this.userDAO = userDAO;
+	}
 	
 	@Override
 	public void userResiter(UserVO userVO) throws Exception {

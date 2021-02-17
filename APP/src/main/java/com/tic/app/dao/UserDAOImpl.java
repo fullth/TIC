@@ -6,13 +6,16 @@ import org.springframework.stereotype.Repository;
 
 import com.tic.app.model.UserVO;
 
-@Repository
 public class UserDAOImpl implements UserDAO{
 
 	private static final String NAMESPACE = "com.tic.app.service.AdmUserRegService";
 	
+	private final SqlSession sqlSession;
+	
 	@Autowired
-	private SqlSession sqlSession;
+	public UserDAOImpl(SqlSession sqlSession) {
+		this.sqlSession = sqlSession;
+	}
 	
 	@Override
 	public void userResister(UserVO userVO) throws Exception {
