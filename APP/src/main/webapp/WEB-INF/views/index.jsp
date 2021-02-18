@@ -28,10 +28,11 @@
 				
 				<div class="main">
 					<br>
-					<form action="/homeController">						
-						<input type="submit" name="homeController" value="LOGIN">
-						<input type="submit" name="homeController" value="JOIN">
-						<input type="submit" name="homeController" value="GUEST">
+					<form action="/router">			
+						<br>	
+						<input type="submit" name="path" value="login">
+						<input type="submit" name="path" value="join">
+						<input type="submit" name="path" value="news">
 					</form>
 				</div>
 

@@ -28,10 +28,14 @@
 				
 				<div class="main">
 					<br>
-					<form action="/homeController">						
-						<input type="submit" name="homeControl" value="LOGIN">
-						<input type="submit" name="homeControl" value="JOIN">
-						<input type="submit" name="homeControl" value="GUEST">
+					<form action="/homeController">					
+						<br>	
+						<label>ID<input type="text" name="homeControl" ></label>
+						<label>Password<input type="text" name="homeControl" ></label>
+						<label>Password Check<input type="text" name="homeControl" ></label>
+						<label>Name<input type="text" name="homeControl"></label>
+						<label>Email<input type="text" name="homeControl" ></label>
+						<input type="button" name="join" value="join">
 					</form>
 				</div>
 
