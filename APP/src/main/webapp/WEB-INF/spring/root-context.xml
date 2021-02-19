@@ -19,21 +19,21 @@
 	<context:property-placeholder location="classpath:database/db.properties"/>
 	
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
-		<property name="driverClassName" value="db.driverClassName" />
-		<property name="url" value="db.url" />
-		<property name="username" value="db.username" />
-		<property name="password" value="db.password" />
+		<property name="driverClassName" value="${db.driverClassName}" />
+		<property name="url" value="${db.url}" />
+		<property name="username" value="${db.username}" />
+		<property name="password" value="${db.password}" />
 	</bean>
     
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="configLocation" value="classpath:mybatis-config.xml"></property>
         <property name="dataSource" ref="dataSource"></property>
-        <property name="mapperLocations" value="classpath:mappers/*.xml"></property>
+        <property name="mapperLocations" value="classpath:com.tic.app.mapper.*.xml"></property>
     </bean>    
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
         <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
     </bean>
     
-    <mybatis-spring:scan base-package="com.tic.app"/>
+    <mybatis-spring:scan base-package="com.tic.app.mapper"/>
     
 </beans>

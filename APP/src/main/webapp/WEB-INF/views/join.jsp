@@ -13,43 +13,37 @@
 <link rel="stylesheet" href="../resources/css/main.css" />
 </head>
 <body class="is-preload">
-
 	<!-- Wrapper -->
 	<div id="wrapper">
-
 		<!-- Main -->
 		<div id="main">
 			<div class="inner">
-
 				<!-- Header -->
 				<header id="header">
-					<h1 class="main">MAIN</h1>
+					<h1 class="main">JOIN</h1>
 				</header>
-				
 				<div class="main">
 					<br>
-					<form action="/homeController">					
+					<form action="/join" method="post" name="joinForm">					
 						<br>	
-						<label>ID<input type="text" name="homeControl" ></label>
-						<label>Password<input type="text" name="homeControl" ></label>
-						<label>Password Check<input type="text" name="homeControl" ></label>
-						<label>Name<input type="text" name="homeControl"></label>
-						<label>Email<input type="text" name="homeControl" ></label>
-						<input type="button" name="join" value="join">
+						<label>ID<input type="text" name="USER_ID" ></label>
+						<label>Name<input type="text" name="USER_NAME" ></label>
+						<label>Email<input type="text" name="USER_EMAIL" ></label>
+						<label>Password<input type="password" name="USER_PW"></label>
+						<label>Password Check<input type="password" name="USER_PWC" ></label>
+						<input type="submit" name="join" value="join">
 					</form>
 				</div>
-
 			</div>
 		</div>
-
 	</div>
 
 	<!-- Scripts -->
+	<script src="../resources/js/account.js"></script>
 	<script src="../resources/js/jquery.min.js"></script>
 	<script src="../resources/js/browser.min.js"></script>
 	<script src="../resources/js/breakpoints.min.js"></script>
 	<script src="../resources/js/util.js"></script>
 	<script src="../resources/js/main.js"></script>
-
 </body>
 </html>

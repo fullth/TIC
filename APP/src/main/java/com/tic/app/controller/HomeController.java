@@ -20,13 +20,19 @@ public class HomeController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
+		logger.info("@RequestMapping::: /");
 		return "index";
+	}
+	
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String login(Locale locale, Model model) {
+		logger.info("@RequestMapping::: /login");
+		return "login";
 	}
 
 	@RequestMapping(value = "/news", method = RequestMethod.GET)
 	public String news(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
+		logger.info("@RequestMapping::: /news");
 		return "news";
 	}
 

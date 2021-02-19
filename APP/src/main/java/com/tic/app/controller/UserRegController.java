@@ -12,25 +12,16 @@ import com.tic.app.service.UserService;
 
 @Controller
 public class UserRegController {
-		
-	private final UserService userService;
 	
 	@Autowired
-	public UserRegController(UserService userService) {
-		this.userService = userService;
-	}
-			
-	@GetMapping(value="/join")
-	public String registerGET() throws Exception {
-		return "/user/join";
-	}
+	private UserService userService;
 	
-	@PostMapping(value="/register")
+	@PostMapping(value="/join")
 	public String registerPOST(UserVO userVO, RedirectAttributes redirectAttributes) throws Exception {
 		
 		String hashedPw = BCrypt.hashpw(userVO.getUSER_PW(), BCrypt.gensalt());
 		userVO.setUSER_PW(hashedPw);
-		userService.userResiter(userVO);
+		userService.insertUser(userVO);
 		redirectAttributes.addFlashAttribute("msg", "RESISTERED");
 		
 		return "redirect:/login";
