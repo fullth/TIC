@@ -28,10 +28,11 @@
 				
 				<div class="main">
 					<br>
-					<form action="/homeController">						
-						<input type="submit" name="homeController" value="LOGIN">
-						<input type="submit" name="homeController" value="JOIN">
-						<input type="submit" name="homeController" value="GUEST">
+					<form action="/router">			
+						<br>	
+						<input type="submit" name="path" value="login">
+						<input type="submit" name="path" value="join">
+						<input type="submit" name="path" value="news">
 					</form>
 				</div>
 
@@ -41,11 +42,15 @@
 	</div>
 
 	<!-- Scripts -->
+	<script src="../resources/js/includeHTML.js"></script>
 	<script src="../resources/js/jquery.min.js"></script>
 	<script src="../resources/js/browser.min.js"></script>
 	<script src="../resources/js/breakpoints.min.js"></script>
 	<script src="../resources/js/util.js"></script>
 	<script src="../resources/js/main.js"></script>
-
+	
+	<script>
+		includeHTML();	
+	</script>
 </body>
 </html>

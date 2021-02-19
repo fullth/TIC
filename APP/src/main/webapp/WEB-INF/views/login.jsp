@@ -23,15 +23,21 @@
 
 				<!-- Header -->
 				<header id="header">
-					<h1 class="main">MAIN</h1>
+					<h1 class="main">LOGIN</h1>
 				</header>
 				
 				<div class="main">
 					<br>
-					<form action="/homeController">						
-						<input type="submit" name="homeControl" value="LOGIN">
-						<input type="submit" name="homeControl" value="JOIN">
-						<input type="submit" name="homeControl" value="GUEST">
+					<form action="/router">		
+						<br>
+						<label>
+							ID <input type="text" name="id">
+						</label>
+						<label>
+							Password <input type="password" name="pwd" value="">
+						</label>
+						<input type="submit" name="Login" value="submit">
+						<a href="/"><input type="button" name="router" value="main"></a>
 					</form>
 				</div>
 
