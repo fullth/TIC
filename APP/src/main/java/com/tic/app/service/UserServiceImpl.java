@@ -3,18 +3,17 @@ package com.tic.app.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tic.app.dao.UserDAO;
+import com.tic.app.mapper.UserMapper;
 import com.tic.app.model.UserVO;
 
 @Service
 public class UserServiceImpl implements UserService{
 
 	@Autowired
-	private UserDAO userDAO;
+	private UserMapper userMapper;
 	
 	@Override
-	public void userResiter(UserVO userVO) throws Exception {
-		// TODO Auto-generated method stub
-		
+	public void insertUser(UserVO userVO) throws Exception {
+		userMapper.insertUser(userVO);
 	}
 }
