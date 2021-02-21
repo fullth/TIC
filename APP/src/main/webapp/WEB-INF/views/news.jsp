@@ -232,7 +232,7 @@
 					<ul>
 						<li><a href="/">Home</a></li>
 						<li><a href="news">News API</a></li>
-						<li><a href="elements.html">Elements</a></li>
+						<li><a href="sms">Send SMS</a></li>
 						<li><span class="opener">Submenu</span>
 							<ul>
 								<li><a href="#">Lorem Dolor</a></li>
