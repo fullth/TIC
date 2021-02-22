@@ -18,13 +18,19 @@ public class SmsSendService {
 	
 	public void sendSMS(String propTo, String propFrom, String propText) {
 		
+		Date date = new Date();
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
+		String todayDate = simpleDateFormat.format(date);
+		String reservedTime = "210000";
+		
         JsonObject params = new JsonObject();
         JsonArray messages = new JsonArray();
 
         JsonObject msg = new JsonObject();
-        msg.addProperty("to", propTo);
-        msg.addProperty("from", propFrom);
+        msg.addProperty("to", propTo); // ¶ç¾î¾²±â ¾ø´Â ,·Î ±¸ºĞ ex.) 0101234578,01056781234
+        msg.addProperty("from", propFrom); // »çÀüµî·ÏµÈ ¹øÈ£¸¸ Çã¿ë.
         msg.addProperty("text", propText);
+        msg.addProperty("datetime", today + reservedTime); // ¿¹¾à½Ã°£. Å×½ºÆ® ¸øÇÔ.
         messages.add(msg);
 
         params.add("messages", messages);
@@ -33,7 +39,7 @@ public class SmsSendService {
         api.enqueue(new Callback<>() {
             @Override
             public void onResponse(Call<GroupModel> call, Response<GroupModel> response) {
-                // ì„±ê³µ ì‹œ 200ì´ ì¶œë ¥ë©ë‹ˆë‹¤.
+            	// ¼º°ø ½Ã 200ÀÌ Ãâ·ÂµË´Ï´Ù.
                 if (response.isSuccessful()) {
                     System.out.println("statusCode : " + response.code());
                     GroupModel body = response.body();
