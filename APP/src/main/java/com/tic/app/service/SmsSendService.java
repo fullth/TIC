@@ -1,6 +1,8 @@
 package com.tic.app.service;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.springframework.stereotype.Service;
 
@@ -21,16 +23,16 @@ public class SmsSendService {
 		Date date = new Date();
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
 		String todayDate = simpleDateFormat.format(date);
-		String reservedTime = "210000";
+		String reservedTime = "222500";
 		
         JsonObject params = new JsonObject();
         JsonArray messages = new JsonArray();
 
         JsonObject msg = new JsonObject();
-        msg.addProperty("to", propTo); // 띄어쓰기 없는 ,로 구분 ex.) 0101234578,01056781234
-        msg.addProperty("from", propFrom); // 사전등록된 번호만 허용.
+        msg.addProperty("to", propTo); 
+        msg.addProperty("from", propFrom); 
         msg.addProperty("text", propText);
-        msg.addProperty("datetime", today + reservedTime); // 예약시간. 테스트 못함.
+        //msg.addProperty("datetime", todayDate + reservedTime); 
         messages.add(msg);
 
         params.add("messages", messages);
@@ -39,7 +41,6 @@ public class SmsSendService {
         api.enqueue(new Callback<>() {
             @Override
             public void onResponse(Call<GroupModel> call, Response<GroupModel> response) {
-            	// 성공 시 200이 출력됩니다.
                 if (response.isSuccessful()) {
                     System.out.println("statusCode : " + response.code());
                     GroupModel body = response.body();
