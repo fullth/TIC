@@ -1,7 +1,7 @@
-package com.tic.app.service;
+package com.tic.app.mapper;
 
 import com.tic.app.model.RsvVO;
 
-public interface SmsSendService {
+public interface RsvMapper {
 	public void insertNumber(RsvVO rsvVO) throws Exception;
 }
