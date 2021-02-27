@@ -28,16 +28,10 @@
 				
 				<div class="main">
 					<br>
-					<form action="/sendSms">		
+					<form action="/sendSms" method="post">		
 						<br>
 						<label>
-							TO <input type="text" name="to">
-						</label>
-						<label>
-							FROM <input type="text" name="from">
-						</label>
-						<label>
-							TEXT <input type="text" name="text">
+							PHONE NUMBER <input type="text" name="to">
 						</label>
 						<input type="submit" name="Send" value="submit">
 					</form>

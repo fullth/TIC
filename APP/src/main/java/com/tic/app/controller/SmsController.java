@@ -33,19 +33,22 @@ public class SmsController {
 		return "sms";
 	}
 	
-	@RequestMapping(value="/sendSms")
-	public String sendSms(@RequestParam(value="to")String to,
-						  @RequestParam(value="from")String from,
-						  @RequestParam(value="text")String text) throws IOException {
+	@PostMapping(value="/sendSms")
+	public String sendSms(@RequestParam(value="to")String to
+						  //@RequestParam(value="from")String from,
+						  //@RequestParam(value="text")String text
+						  ) throws IOException {
 		
-		smsSendServiceImpl.sendSMS(to, from, text);
+		//smsSendServiceImpl.sendSMS(to, from, text);
+		smsSendServiceImpl.sendSMS(to);
 		
-		return "redirect:/sms";
+		return "regNumber";
 	}
 	
 	@PostMapping(value="/regNumber")
 	public String regNumber(RsvVO rsvVO, RedirectAttributes redirectAttributes) throws Exception {
 		
+		logger.info("@RequestMapping::: /regNumber");
 		String hashedPw = BCrypt.hashpw(rsvVO.getPhoneNumber(), BCrypt.gensalt());
 		rsvVO.setPhoneNumber(hashedPw);
 		smsSendServiceImpl.insertNumber(rsvVO);

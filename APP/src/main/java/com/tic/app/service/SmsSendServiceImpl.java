@@ -31,8 +31,8 @@ public class SmsSendServiceImpl implements SmsSendService {
 		rsvMapper.insertNumber(rsvVO);
 	}
 	
-	public void sendSMS(String propTo, String propFrom, String propText) {
-		
+	//public void sendSMS(String propTo, String propFrom, String propText) {
+	public void sendSMS(String propTo) {	
 		Date date = new Date();
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
 		String todayDate = simpleDateFormat.format(date);
@@ -43,8 +43,8 @@ public class SmsSendServiceImpl implements SmsSendService {
 
         JsonObject msg = new JsonObject();
         msg.addProperty("to", propTo); 
-        msg.addProperty("from", propFrom); 
-        msg.addProperty("text", propText);
+        msg.addProperty("from", ""); 
+        msg.addProperty("text", "Test send sms.");
         //msg.addProperty("datetime", todayDate + reservedTime); 
         messages.add(msg);
 
