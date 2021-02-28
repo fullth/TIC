@@ -1,6 +1,5 @@
 package com.tic.app.controller;
 
-import java.io.IOException;
 import java.util.Locale;
 
 import org.mindrot.jbcrypt.BCrypt;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.tic.app.model.RsvVO;
-import com.tic.app.model.UserVO;
 import com.tic.app.service.SmsSendServiceImpl;
 
 @Controller
@@ -27,6 +25,9 @@ public class SmsController {
 	@Autowired
 	SmsSendServiceImpl smsSendServiceImpl;
 	
+	@Autowired
+	SmsController smsController;
+	
 	@RequestMapping(value = "/sms", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("@RequestMapping::: /sms");
@@ -34,15 +35,29 @@ public class SmsController {
 	}
 	
 	@PostMapping(value="/sendSms")
-	public String sendSms(@RequestParam(value="to")String to
+	public void sendSms(@RequestParam(value="to")String to
 						  //@RequestParam(value="from")String from,
 						  //@RequestParam(value="text")String text
-						  ) throws IOException {
+							,RsvVO rsvVO
+						  ) throws Exception {
 		
 		//smsSendServiceImpl.sendSMS(to, from, text);
 		smsSendServiceImpl.sendSMS(to);
 		
-		return "regNumber";
+		smsController.checkNumber(rsvVO);
+	}
+	
+	public String checkNumber(RsvVO rsvVO) throws Exception {
+		
+		int test = smsSendServiceImpl.selectCountNumber(rsvVO);
+		if(test > 0) {
+			String err = "EXIST NUMBER";
+			return err;
+		} else {
+			smsController.regNumber(rsvVO, null);
+		}
+		
+		return "";
 	}
 	
 	@PostMapping(value="/regNumber")

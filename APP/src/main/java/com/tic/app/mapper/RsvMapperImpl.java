@@ -20,4 +20,11 @@ public class RsvMapperImpl implements RsvMapper{
 		sqlSession.insert(namespace + ".insertNumber", rsvVO);
 	}
 
+	@Override
+	public int selectCountNumber(RsvVO rsvVO) throws Exception {
+		
+		sqlSession.selectList(namespace + ".selectCountNumber", rsvVO);
+		return 0 ;
+	}
+
 }

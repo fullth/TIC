@@ -1,12 +1,10 @@
 package com.tic.app.model;
 
 import java.sql.Date;
-import java.text.SimpleDateFormat;
-
-import org.springframework.beans.factory.annotation.Autowired;
 
 public class UserVO {
 	
+	@SuppressWarnings("unused")
 	private static final long serialVersionUID = 1L;
 	
 	private String USER_ID;

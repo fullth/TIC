@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,6 +30,12 @@ public class SmsSendServiceImpl implements SmsSendService {
 	@Override
 	public void insertNumber(RsvVO rsvVO) throws Exception {
 		rsvMapper.insertNumber(rsvVO);
+	}
+	
+	@Override
+	public int selectCountNumber(RsvVO rsvVO) throws Exception {
+		int count = rsvMapper.selectCountNumber(rsvVO);
+		return count;
 	}
 	
 	//public void sendSMS(String propTo, String propFrom, String propText) {

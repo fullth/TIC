@@ -4,6 +4,14 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.tic.app.mapper.RsvMapper">
+	
+	<select id="selectCountNumber" resultType="java.util.HashMap">
+		SELECT COUNT(PHONE_NUMBER) AS CHK_EXIST
+		  FROM RESERVSATION
+		 WHERE 1=1
+		   AND PHONE_NUMBER = ${PHONE_NUMBER}
+	</select>
+
 	<insert id="insertNumber" parameterType="hashmap">
 		INSERT INTO RESERVATION (
 			 PHONE_NUMBER
