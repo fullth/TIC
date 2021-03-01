@@ -38,33 +38,32 @@ public class SmsController {
 	public void sendSms(@RequestParam(value="to")String to
 						  //@RequestParam(value="from")String from,
 						  //@RequestParam(value="text")String text
-							,RsvVO rsvVO
 						  ) throws Exception {
 		
 		//smsSendServiceImpl.sendSMS(to, from, text);
 		smsSendServiceImpl.sendSMS(to);
 		
-		smsController.checkNumber(rsvVO);
+		smsController.checkNumber(to);
 	}
 	
-	public String checkNumber(RsvVO rsvVO) throws Exception {
+	public String checkNumber(String to) throws Exception {
 		
-		int test = smsSendServiceImpl.selectCountNumber(rsvVO);
+		int test = smsSendServiceImpl.selectCountNumber(to);
 		if(test > 0) {
 			String err = "EXIST NUMBER";
 			return err;
 		} else {
-			smsController.regNumber(rsvVO, null);
+			smsController.regNumber(to, null);
 		}
 		
 		return "";
 	}
 	
 	@PostMapping(value="/regNumber")
-	public String regNumber(RsvVO rsvVO, RedirectAttributes redirectAttributes) throws Exception {
+	public String regNumber(String to, RsvVO rsvVO) throws Exception {
 		
 		logger.info("@RequestMapping::: /regNumber");
-		String hashedPw = BCrypt.hashpw(rsvVO.getPhoneNumber(), BCrypt.gensalt());
+		String hashedPw = BCrypt.hashpw(to, BCrypt.gensalt());
 		rsvVO.setPhoneNumber(hashedPw);
 		smsSendServiceImpl.insertNumber(rsvVO);
 		

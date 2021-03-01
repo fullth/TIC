@@ -33,8 +33,8 @@ public class SmsSendServiceImpl implements SmsSendService {
 	}
 	
 	@Override
-	public int selectCountNumber(RsvVO rsvVO) throws Exception {
-		int count = rsvMapper.selectCountNumber(rsvVO);
+	public int selectCountNumber(String to) throws Exception {
+		int count = rsvMapper.selectCountNumber(to);
 		return count;
 	}
 	
