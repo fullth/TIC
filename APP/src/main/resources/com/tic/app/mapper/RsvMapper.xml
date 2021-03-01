@@ -9,7 +9,7 @@
 		SELECT COUNT(PHONE_NUMBER) AS CHK_EXIST
 		  FROM RESERVSATION
 		 WHERE 1=1
-		   AND PHONE_NUMBER = ${PHONE_NUMBER}
+		   AND PHONE_NUMBER = #{PHONE_NUMBER}
 	</select>
 
 	<insert id="insertNumber" parameterType="hashmap">
