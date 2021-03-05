@@ -22,13 +22,13 @@ public class SendJsonSMS {
         params.add("messages", messages);
 
         Call<GroupModel> api = APIInit.getAPI().sendMessages(APIInit.getHeaders(), params);
-        api.enqueue(new Callback<>() {
+        api.enqueue(new Callback<GroupModel>() {
             @Override
-            public void onResponse(Call<GroupModel> call, Response<GroupModel> response) {
+            public void onResponse(Call call, Response response) {
                 // 성공 시 200이 출력됩니다.
                 if (response.isSuccessful()) {
                     System.out.println("statusCode : " + response.code());
-                    GroupModel body = response.body();
+                    GroupModel body = (GroupModel) response.body();
                     System.out.println("groupId : " + body.getGroupId());
                     System.out.println("status: " + body.getStatus());
                     System.out.println("count: " + body.getCount().toString());

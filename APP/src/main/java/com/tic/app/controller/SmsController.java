@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.tic.app.model.RsvVO;
 import com.tic.app.service.SmsSendServiceImpl;
@@ -30,43 +29,55 @@ public class SmsController {
 	
 	@RequestMapping(value = "/sms", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		logger.info("@RequestMapping::: /sms");
+		logger.info("SmsController.sms");
 		return "sms";
 	}
 	
 	@PostMapping(value="/sendSms")
-	public void sendSms(@RequestParam(value="to")String to
+	public String sendSms(@RequestParam(value="to")String to,
+						  RsvVO rsvVO
 						  //@RequestParam(value="from")String from,
 						  //@RequestParam(value="text")String text
 						  ) throws Exception {
+		logger.info("SmsController.sendSms");
 		
-		//smsSendServiceImpl.sendSMS(to, from, text);
-		smsSendServiceImpl.sendSMS(to);
+		rsvVO.setPhoneNumber(to);
 		
-		smsController.checkNumber(to);
-	}
-	
-	public String checkNumber(String to) throws Exception {
-		
-		int test = smsSendServiceImpl.selectCountNumber(to);
-		if(test > 0) {
-			String err = "EXIST NUMBER";
-			return err;
-		} else {
-			smsController.regNumber(to, null);
+		if (smsController.checkNumber(rsvVO) == true) {			
+			smsSendServiceImpl.sendSMS(to);
+			return "redirect:/sms";
 		}
 		
-		return "";
+		return "NotFound404";
 	}
 	
-	@PostMapping(value="/regNumber")
-	public String regNumber(String to, RsvVO rsvVO) throws Exception {
+	public boolean checkNumber(RsvVO rsvVO) {
+		logger.info("SmsController.checkNumber");
+		boolean prcsCmplt = false;
 		
-		logger.info("@RequestMapping::: /regNumber");
-		String hashedPw = BCrypt.hashpw(to, BCrypt.gensalt());
+		int chkExistNum;
+		try {
+			chkExistNum = smsSendServiceImpl.selectCountNumber(rsvVO);
+
+			if(chkExistNum > 0) {
+				Exception e = new Exception("EXIST NUMBER");
+				throw e;
+			} else {
+				smsController.regNumber(rsvVO);
+				prcsCmplt = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return prcsCmplt;
+	}
+	
+	public void regNumber(RsvVO rsvVO) throws Exception {
+		
+		logger.info("SmsController.regNumber");
+		String hashedPw = BCrypt.hashpw(rsvVO.getPhoneNumber(), BCrypt.gensalt());
 		rsvVO.setPhoneNumber(hashedPw);
 		smsSendServiceImpl.insertNumber(rsvVO);
-		
-		return "redirect:/sms";
 	}
 }

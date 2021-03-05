@@ -5,9 +5,9 @@
 
 <mapper namespace="com.tic.app.mapper.RsvMapper">
 	
-	<select id="selectCountNumber" resultType="java.util.HashMap">
+	<select id="selectCountNumber" resultType="int">
 		SELECT COUNT(PHONE_NUMBER) AS CHK_EXIST
-		  FROM RESERVSATION
+		  FROM RESERVATION
 		 WHERE 1=1
 		   AND PHONE_NUMBER = #{PHONE_NUMBER}
 	</select>
