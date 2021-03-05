@@ -55,10 +55,14 @@ public class SmsController {
 		logger.info("SmsController.checkNumber");
 		boolean prcsCmplt = false;
 		
+		rsvVO.getPhoneNumber();
+		
 		int chkExistNum;
 		try {
 			chkExistNum = smsSendServiceImpl.selectCountNumber(rsvVO);
-
+			System.out.println();
+			System.out.println(chkExistNum);
+			System.out.println();
 			if(chkExistNum > 0) {
 				Exception e = new Exception("EXIST NUMBER");
 				throw e;
