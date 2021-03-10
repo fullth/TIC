@@ -56,6 +56,7 @@ public class SmsController {
 		boolean prcsCmplt = false;
 		
 		rsvVO.getPhoneNumber();
+		System.out.println(rsvVO.getPhoneNumber());
 		
 		int chkExistNum;
 		try {
