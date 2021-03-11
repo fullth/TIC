@@ -18,7 +18,6 @@ import model.response.GroupModel;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-//윈도우(이클립스) <-> 맥(STS) 번갈아 커밋을 하니, 자주 의존성 문제가 발생...
 
 @Service
 public class SmsSendServiceImpl implements SmsSendService {
@@ -37,8 +36,8 @@ public class SmsSendServiceImpl implements SmsSendService {
 		return count;
 	}
 
-	//public void sendSMS(String propTo, String propFrom, String propText) {
-	public void sendSMS(String propTo) {	
+	public void sendSMS(String propTo, RsvVO rsvVO) {
+		
 		Date date = new Date();
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
 		String todayDate = simpleDateFormat.format(date);

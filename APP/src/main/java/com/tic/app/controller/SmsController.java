@@ -6,6 +6,7 @@ import org.mindrot.jbcrypt.BCrypt;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,15 +37,13 @@ public class SmsController {
 	@PostMapping(value="/sendSms")
 	public String sendSms(@RequestParam(value="to")String to,
 						  RsvVO rsvVO
-						  //@RequestParam(value="from")String from,
-						  //@RequestParam(value="text")String text
 						  ) throws Exception {
 		logger.info("SmsController.sendSms");
 		
 		rsvVO.setPhoneNumber(to);
 		
 		if (smsController.checkNumber(rsvVO) == true) {			
-			smsSendServiceImpl.sendSMS(to);
+			smsSendServiceImpl.sendSMS(to, rsvVO);
 			return "redirect:/sms";
 		}
 		
@@ -55,8 +54,6 @@ public class SmsController {
 		logger.info("SmsController.checkNumber");
 		boolean prcsCmplt = false;
 		
-		rsvVO.getPhoneNumber();
-		System.out.println(rsvVO.getPhoneNumber());
 		
 		int chkExistNum;
 		try {
@@ -81,7 +78,16 @@ public class SmsController {
 	public void regNumber(RsvVO rsvVO) throws Exception {
 		
 		logger.info("SmsController.regNumber");
+		
+		// BCrypt only support one way encryption.
 		String hashedPw = BCrypt.hashpw(rsvVO.getPhoneNumber(), BCrypt.gensalt());
+		String rowPw = rsvVO.getPhoneNumber();
+		
+		BCryptPasswordEncoder bcryptPasswordEncoder = new BCryptPasswordEncoder(10);
+		bcryptPasswordEncoder.matches(rowPw, hashedPw);
+		
+		System.out.println(bcryptPasswordEncoder.matches(rowPw, hashedPw));
+		
 		rsvVO.setPhoneNumber(hashedPw);
 		smsSendServiceImpl.insertNumber(rsvVO);
 	}
