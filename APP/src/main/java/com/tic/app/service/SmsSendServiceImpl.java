@@ -1,9 +1,10 @@
 package com.tic.app.service;
 
 import java.io.IOException;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,6 +35,14 @@ public class SmsSendServiceImpl implements SmsSendService {
 	public int selectCountNumber(RsvVO rsvVO) throws Exception {
 		int count = rsvMapper.selectCountNumber(rsvVO);
 		return count;
+	}
+	
+
+	@Override
+	public HashMap<Integer, String> selectNumber(RsvVO rsvVo) throws Exception {
+		HashMap<Integer, String> pwdMap = new HashMap<Integer, String>();
+		pwdMap.putAll(rsvMapper.selectNumber(rsvVo));
+		return pwdMap;
 	}
 
 	public void sendSMS(String propTo, RsvVO rsvVO) {

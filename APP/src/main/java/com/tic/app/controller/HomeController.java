@@ -50,7 +50,7 @@ public class HomeController {
 			case "login" :
 				returnPage = path;
 				break;
-			case "news" : 
+			case "guest" : 
 				returnPage = path;
 				break;
 			default:

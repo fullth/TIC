@@ -1,5 +1,6 @@
 package com.tic.app.controller;
 
+import java.util.HashMap;
 import java.util.Locale;
 
 import org.mindrot.jbcrypt.BCrypt;
@@ -58,9 +59,6 @@ public class SmsController {
 		int chkExistNum;
 		try {
 			chkExistNum = smsSendServiceImpl.selectCountNumber(rsvVO);
-			System.out.println();
-			System.out.println(chkExistNum);
-			System.out.println();
 			if(chkExistNum > 0) {
 				Exception e = new Exception("EXIST NUMBER");
 				throw e;
@@ -82,6 +80,9 @@ public class SmsController {
 		// BCrypt only support one way encryption.
 		String hashedPw = BCrypt.hashpw(rsvVO.getPhoneNumber(), BCrypt.gensalt());
 		String rowPw = rsvVO.getPhoneNumber();
+		
+		HashMap pwdMap = new HashMap();
+		System.out.println(smsSendServiceImpl.selectNumber(rsvVO));
 		
 		BCryptPasswordEncoder bcryptPasswordEncoder = new BCryptPasswordEncoder(10);
 		bcryptPasswordEncoder.matches(rowPw, hashedPw);
