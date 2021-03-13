@@ -1,5 +1,6 @@
 package com.tic.app.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Locale;
 
@@ -81,8 +82,15 @@ public class SmsController {
 		String hashedPw = BCrypt.hashpw(rsvVO.getPhoneNumber(), BCrypt.gensalt());
 		String rowPw = rsvVO.getPhoneNumber();
 		
-		HashMap pwdMap = new HashMap();
+		Object result = smsSendServiceImpl.selectNumber(rsvVO);
+		
+		System.out.println();
+		System.out.println(result);
+		System.out.println();
+		
+		System.out.println();
 		System.out.println(smsSendServiceImpl.selectNumber(rsvVO));
+		System.out.println();
 		
 		BCryptPasswordEncoder bcryptPasswordEncoder = new BCryptPasswordEncoder(10);
 		bcryptPasswordEncoder.matches(rowPw, hashedPw);
