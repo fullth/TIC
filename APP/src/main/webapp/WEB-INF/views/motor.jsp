@@ -12,7 +12,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SMS Service</title>
+<title>Motor Trend</title>
 
 <!-- Google Font: Source Sans Pro -->
 <link rel="stylesheet"
@@ -51,7 +51,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 		<aside class="main-sidebar sidebar-dark-primary elevation-4">
 			<!-- Brand Logo -->
 			<a href="index3.html" class="brand-link"> <img
-				src="dist/img/AdminLTELogo.png" alt=""
+				src="../resources/dist/img/AdminLTELogo.png" alt=""
 				class="brand-image img-circle elevation-3" style="opacity: .8">
 				<span class="brand-text font-weight-light"><strong>fullth</strong></span>
 			</a>
@@ -98,12 +98,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
 				<div class="container-fluid">
 					<div class="row mb-2">
 						<div class="col-sm-6">
-							<h1 class="m-0">SMS Service</h1>
+							<h1 class="m-0">Motor Trend</h1>
 						</div>
 						<!-- /.col -->
 						<div class="col-sm-6">
 							<ol class="breadcrumb float-sm-right">
-								<li class="breadcrumb-item"><a href="#">SMS Service</a></li>
+								<li class="breadcrumb-item"><a href="#">Motor Trend</a></li>
 								<li class="breadcrumb-item active">Fullth</li>
 							</ol>
 						</div>
@@ -121,25 +121,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
 					<div class="row">
 						<div class="col-md-12">
 							<!-- general form elements -->
-							<div class="card card-primary">
+							<div class="card card-success">
 								<div class="card-header">
-									<h3 class="card-title">Send SMS</h3>
+									<h3 class="card-title">Select brand</h3>
 								</div>
 								<!-- /.card-header -->
 								<!-- form start -->
 								<form>
 									<div class="card-body">
 										<div class="form-group">
-											<label for="exampleInputEmail1">Phone Number</label> <input
-												type="email" class="form-control" id="exampleInputEmail1"
-												placeholder="Enter number">
+											<button type="submit" class="btn btn-success">KIA</button>
+											<button type="submit" class="btn btn-success">HYUNDAI</button>
+											<button type="submit" class="btn btn-success">TESLA</button>
+											<button type="submit" class="btn btn-success">CHEVROLET</button>
 										</div>
 									</div>
 									<!-- /.card-body -->
-
-									<div class="card-footer">
-										<button type="submit" class="btn btn-primary">Send</button>
-									</div>
 								</form>
 							</div>
 							<!-- /.card -->

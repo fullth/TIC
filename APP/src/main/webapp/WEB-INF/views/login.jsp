@@ -1,51 +1,90 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!doctype html>
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.80.0">
-    <title>Login</title>
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
-    <!-- Bootstrap core CSS -->
-	<link href="../resources/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Log in</title>
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
-    <link href="../resources/dist/css/signin.css" rel="stylesheet">
-  </head>
-  <body class="text-center">
-	<main class="form-signin">
-	  <form>
-	    <img class="mb-4" src="../resources/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
-	    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-	    <label for="inputEmail" class="visually-hidden">Email address</label>
-	    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-	    <label for="inputPassword" class="visually-hidden">Password</label>
-	    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-	    <div class="checkbox mb-3">
-	      <label>
-	        <input type="checkbox" value="remember-me"> Remember me
-	      </label>
-	    </div>
-	    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-	    <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
-	  </form>
-	</main>
-  </body>
+<!-- Google Font: Source Sans Pro -->
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="../resources/plugins/fontawesome-free/css/all.min.css">
+<!-- icheck bootstrap -->
+<link rel="stylesheet"
+	href="../resources/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+<!-- Theme style -->
+<link rel="stylesheet" href="../resources/dist/css/adminlte.min.css">
+</head>
+<body class="hold-transition login-page">
+	<div class="login-box">
+		<div class="login-logo">
+			<a href="../../index2.html"><b>Login</b></a>
+		</div>
+		<!-- /.login-logo -->
+		<div class="card">
+			<div class="card-body login-card-body">
+				<form action="../../index3.html" method="post">
+					<div class="input-group mb-3">
+						<input type="email" class="form-control" placeholder="Email">
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<span class="fas fa-envelope"></span>
+							</div>
+						</div>
+					</div>
+					<div class="input-group mb-3">
+						<input type="password" class="form-control" placeholder="Password">
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<span class="fas fa-lock"></span>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-8">
+							<div class="icheck-primary">
+								<input type="checkbox" id="remember"> <label
+									for="remember"> Remember Me </label>
+							</div>
+						</div>
+						<!-- /.col -->
+						<div class="col-4">
+							<button type="submit" class="btn btn-primary btn-block">Sign
+								In</button>
+						</div>
+						<!-- /.col -->
+					</div>
+				</form>
+
+				<div class="social-auth-links text-center mb-3">
+					<br> <a href="#" class="btn btn-block btn-primary"> <i
+						class="fab fa-facebook mr-2"></i> Sign in using Facebook
+					</a> <a href="#" class="btn btn-block btn-danger"> <i
+						class="fab fa-google-plus mr-2"></i> Sign in using Google+
+					</a>
+				</div>
+				<!-- /.social-auth-links -->
+
+				<p class="mb-1">
+					<a href="forgot-password.html">I forgot my password</a>
+				</p>
+				<p class="mb-0">
+					<a href="register.html" class="text-center">Register</a>
+				</p>
+			</div>
+			<!-- /.login-card-body -->
+		</div>
+	</div>
+	<!-- /.login-box -->
+
+	<!-- jQuery -->
+	<script src="../resources/plugins/jquery/jquery.min.js"></script>
+	<!-- Bootstrap 4 -->
+	<script src="../resources/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- AdminLTE App -->
+	<script src="../resources/dist/js/adminlte.min.js"></script>
+</body>
 </html>
