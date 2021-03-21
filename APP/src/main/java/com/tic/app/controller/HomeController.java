@@ -30,10 +30,16 @@ public class HomeController {
 		return "login";
 	}
 
-	@RequestMapping(value = "/news", method = RequestMethod.GET)
+	@RequestMapping(value = "/motor", method = RequestMethod.GET)
 	public String news(Locale locale, Model model) {
-		logger.info("@RequestMapping::: /news");
-		return "news";
+		logger.info("@RequestMapping::: /motor");
+		return "motor";
+	}
+
+	@RequestMapping(value = "/main", method = RequestMethod.GET)
+	public String main(Locale locale, Model model) {
+		logger.info("@RequestMapping::: /main");
+		return "main";
 	}
 
 	@RequestMapping(value = "/router", method = RequestMethod.GET)
@@ -51,7 +57,7 @@ public class HomeController {
 				returnPage = path;
 				break;
 			case "guest" : 
-				returnPage = path;
+				returnPage = "main";
 				break;
 			default:
 				break;

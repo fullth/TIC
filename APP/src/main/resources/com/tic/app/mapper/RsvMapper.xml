@@ -5,11 +5,16 @@
 
 <mapper namespace="com.tic.app.mapper.RsvMapper">
 	
-	<select id="selectCountNumber" resultType="int">
+	<select id="selectCountNumber" resultType="Integer">
 		SELECT COUNT(PHONE_NUMBER) AS CHK_EXIST
 		  FROM RESERVATION
 		 WHERE 1=1
 		   AND PHONE_NUMBER = #{PHONE_NUMBER}
+	</select>
+
+	<select id="selectNumber" resultType="hashmap">
+		SELECT PHONE_NUMBER
+		  FROM RESERVATION
 	</select>
 
 	<insert id="insertNumber" parameterType="hashmap">
