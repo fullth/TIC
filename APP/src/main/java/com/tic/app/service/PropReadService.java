@@ -25,6 +25,7 @@ public class PropReadService {
             propArr.add(properties.getProperty("REQUEST_URL"));
             propArr.add(properties.getProperty("CLIENT_ID"));
             propArr.add(properties.getProperty("CLIENT_SECRET"));
+            propArr.add(properties.getProperty("KAKAO_JS_KEY"));
         } catch (IOException e) {
             e.printStackTrace();
         }
