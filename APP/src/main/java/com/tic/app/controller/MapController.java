@@ -19,10 +19,13 @@ public class MapController {
 	@GetMapping(value="testMapView")
 	public String testMapView(Model model) throws IOException {
 		
+		@SuppressWarnings("rawtypes")
 		List getPropArr = propReadService.readProp();
 		String apiKey = (String) getPropArr.get(3);
 		
-		model.addAttribute(apiKey);
+		System.out.println(apiKey);
+		
+		model.addAttribute("apiKey", apiKey);
 		
 		return "testMapView";
 	}
