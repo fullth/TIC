@@ -12,7 +12,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>17Sector Management</title>
+<title></title>
 
 <!-- Google Font: Source Sans Pro -->
 <link rel="stylesheet"
@@ -102,7 +102,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 				<div class="container-fluid">
 					<div class="row mb-2">
 						<div class="col-sm-6">
-							<h1 class="m-0">SMS Service</h1>
+							<h1 class="m-0"></h1>
 						</div>
 						<!-- /.col -->
 						<div class="col-sm-6">
@@ -131,18 +131,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
 								</div>
 								<!-- /.card-header -->
 								<!-- form start -->
-								<form>
-									<div class="card-body">
+								<form action="/sendSms" method="post">
+									<div class="card-body" >
 										<div class="form-group">
 											<label for="exampleInputEmail1">Phone Number</label> <input
-												type="email" class="form-control" id="exampleInputEmail1"
-												placeholder="Enter number">
+												type="text" class="form-control" placeholder="Enter number" name="to">
 										</div>
 									</div>
 									<!-- /.card-body -->
 
 									<div class="card-footer">
 										<button type="submit" class="btn btn-primary">Send</button>
+										<button type="submit" class="btn btn-primary">Reserve</button>
 									</div>
 								</form>
 							</div>
