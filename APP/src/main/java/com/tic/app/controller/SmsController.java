@@ -1,14 +1,10 @@
 package com.tic.app.controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Locale;
 
-import org.mindrot.jbcrypt.BCrypt;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.tic.app.mapper.RsvMapper;
 import com.tic.app.model.RsvVO;
 import com.tic.app.service.SmsSendServiceImpl;
 
@@ -29,6 +26,9 @@ public class SmsController {
 	
 	@Autowired
 	SmsController smsController;
+	
+	@Autowired
+	RsvMapper rsvMapper;
 	
 	@RequestMapping(value = "/sms", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
@@ -61,8 +61,9 @@ public class SmsController {
 		try {
 			chkExistNum = smsSendServiceImpl.selectCountNumber(rsvVO);
 			if(chkExistNum > 0) {
-				Exception e = new Exception("EXIST NUMBER");
-				throw e;
+				//Exception e = new Exception("EXIST NUMBER");
+				//throw e;
+				// TODO Start Here.
 			} else {
 				smsController.regNumber(rsvVO);
 				prcsCmplt = true;
@@ -79,25 +80,16 @@ public class SmsController {
 		logger.info("SmsController.regNumber");
 		
 		// BCrypt only support one way encryption.
-		String hashedPw = BCrypt.hashpw(rsvVO.getPhoneNumber(), BCrypt.gensalt());
-		String rowPw = rsvVO.getPhoneNumber();
+		// String hashedNumber = BCrypt.hashpw(rsvVO.getPhoneNumber(), BCrypt.gensalt());
+		String rowNumber = rsvVO.getPhoneNumber();
 		
-		Object result = smsSendServiceImpl.selectNumber(rsvVO);
+		// BCryptPasswordEncoder bcryptPasswordEncoder = new BCryptPasswordEncoder(10);
+		// bcryptPasswordEncoder.matches(rowPw, hashedNumber);
 		
-		System.out.println();
-		System.out.println(result);
-		System.out.println();
+		// System.out.println(bcryptPasswordEncoder.matches(rowPw, hashedNumber));
 		
-		System.out.println();
-		System.out.println(smsSendServiceImpl.selectNumber(rsvVO));
-		System.out.println();
-		
-		BCryptPasswordEncoder bcryptPasswordEncoder = new BCryptPasswordEncoder(10);
-		bcryptPasswordEncoder.matches(rowPw, hashedPw);
-		
-		System.out.println(bcryptPasswordEncoder.matches(rowPw, hashedPw));
-		
-		rsvVO.setPhoneNumber(hashedPw);
+		// rsvVO.setPhoneNumber(hashedNumber);
+		rsvVO.setPhoneNumber(rowNumber);
 		smsSendServiceImpl.insertNumber(rsvVO);
 	}
 }

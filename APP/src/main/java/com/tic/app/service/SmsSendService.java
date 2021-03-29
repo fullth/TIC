@@ -9,5 +9,5 @@ public interface SmsSendService {
 	
 	public int selectCountNumber(RsvVO rsvVO) throws Exception;
 	
-	public ArrayList<?> selectNumber(RsvVO rsvVo) throws Exception;
+	public ArrayList<RsvVO> selectNumber(RsvVO rsvVo) throws Exception;
 }

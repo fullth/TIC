@@ -1,7 +1,6 @@
 package com.tic.app.mapper;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +30,7 @@ public class RsvMapperImpl implements RsvMapper{
 	}
 
 	@Override
-	public ArrayList<?> selectNumber(RsvVO rsvVO) throws Exception {
+	public ArrayList<RsvVO> selectNumber(RsvVO rsvVO) throws Exception {
 		sqlSession.selectList(namespace + ".selectNumber", rsvVO);
 		return null;
 	}

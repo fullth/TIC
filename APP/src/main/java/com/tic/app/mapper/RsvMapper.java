@@ -10,5 +10,5 @@ public interface RsvMapper {
 		
 	public void insertNumber(RsvVO rsvVO) throws Exception;
 	
-	public ArrayList<?> selectNumber(RsvVO rsvVo) throws Exception;
+	public ArrayList<RsvVO> selectNumber(RsvVO rsvVo) throws Exception;
 }

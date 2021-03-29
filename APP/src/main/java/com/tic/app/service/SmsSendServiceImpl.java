@@ -5,6 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +24,8 @@ import retrofit2.Response;
 @Service
 public class SmsSendServiceImpl implements SmsSendService {
 
+	private static final Logger logger = LoggerFactory.getLogger(SmsSendServiceImpl.class);
+	
 	@Autowired
 	RsvMapper rsvMapper;
 
@@ -37,9 +41,10 @@ public class SmsSendServiceImpl implements SmsSendService {
 	}
 
 	@Override
-	public ArrayList<?> selectNumber(RsvVO rsvVo) throws Exception {
-		rsvMapper.selectNumber(rsvVo);
-		return null;
+	public ArrayList<RsvVO> selectNumber(RsvVO rsvVo) throws Exception {
+		ArrayList<RsvVO> resultList = rsvMapper.selectNumber(rsvVo);
+		logger.info("resultList ::: ", resultList);
+		return resultList;
 	}
 
 	public void sendSMS(String propTo, RsvVO rsvVO) {
@@ -55,7 +60,7 @@ public class SmsSendServiceImpl implements SmsSendService {
         JsonObject msg = new JsonObject();
         msg.addProperty("to", propTo); 
         // TODO Modified to get from database.
-        msg.addProperty("from", ""); 
+        msg.addProperty("from", "01050544944"); 
         msg.addProperty("text", "Test send sms.");
         //msg.addProperty("datetime", todayDate + reservedTime); 
         messages.add(msg);

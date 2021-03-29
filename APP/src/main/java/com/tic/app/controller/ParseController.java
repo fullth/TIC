@@ -34,7 +34,6 @@ public class ParseController {
 		
 		List<Object> titleList = new ArrayList<Object>();
 		List<Object> linkList = new ArrayList<Object>();
-		
 		titleList.add(resultMap.get("title"));
 		String getTitle = titleList.toString();
 		String splitTitle[] = getTitle.split(", ");
