@@ -49,10 +49,9 @@ public class SmsSendServiceImpl implements SmsSendService {
 
 	public void sendSMS(String propTo, RsvVO rsvVO) {
 		
-		Date date = new Date();
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
-		String todayDate = simpleDateFormat.format(date);
-		String reservedTime = "222500";
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("YYYYMMDDHHMMSS");
+		String reservedTime = "20210330231710";
+		String todayDate = simpleDateFormat.format(reservedTime);
 
         JsonObject params = new JsonObject();
         JsonArray messages = new JsonArray();
@@ -62,6 +61,7 @@ public class SmsSendServiceImpl implements SmsSendService {
         // TODO Modified to get from database.
         msg.addProperty("from", "01050544944"); 
         msg.addProperty("text", "Test send sms.");
+        msg.addProperty("datetime", todayDate);
         //msg.addProperty("datetime", todayDate + reservedTime); 
         messages.add(msg);
 

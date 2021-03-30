@@ -34,5 +34,11 @@ public class RsvMapperImpl implements RsvMapper{
 		sqlSession.selectList(namespace + ".selectNumber", rsvVO);
 		return null;
 	}
+
+	@Override
+	public ArrayList<RsvVO> selectAllRegedNumber(RsvVO rsvVO) throws Exception {
+		sqlSession.selectList(namespace + ".selectAllRegedNumber", rsvVO);
+		return null;
+	}
 	
 }

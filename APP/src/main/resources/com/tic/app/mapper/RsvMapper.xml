@@ -18,7 +18,12 @@
 		 WHERE PHONE_NUMBER = #{PHONE_NUMBER}
 	</select>
 
-	<insert id="insertNumber" parameterType="hashmap">
+	<select id="selectAllRegedNumber" resultType="hashmap">
+		SELECT PHONE_NUMBER
+		  FROM RESERVATION
+	</select>
+
+	<insert id="insertNumber" parameterType="arraylist">
 		INSERT INTO RESERVATION (
 			 PHONE_NUMBER
 		) VALUES (
