@@ -3,6 +3,7 @@ package com.tic.app.service;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 import org.slf4j.Logger;
@@ -49,20 +50,19 @@ public class SmsSendServiceImpl implements SmsSendService {
 
 	public void sendSMS(String propTo, RsvVO rsvVO) {
 		
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("YYYYMMDDHHMMSS");
-		String reservedTime = "20210330231710";
-		String todayDate = simpleDateFormat.format(reservedTime);
+		Date date = new Date();
+		logger.info("date [", date + " ]");
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+		String todayDate = simpleDateFormat.format(date);
 
         JsonObject params = new JsonObject();
         JsonArray messages = new JsonArray();
 
         JsonObject msg = new JsonObject();
         msg.addProperty("to", propTo); 
-        // TODO Modified to get from database.
         msg.addProperty("from", "01050544944"); 
         msg.addProperty("text", "Test send sms.");
         msg.addProperty("datetime", todayDate);
-        //msg.addProperty("datetime", todayDate + reservedTime); 
         messages.add(msg);
 
         params.add("messages", messages);

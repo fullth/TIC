@@ -1,5 +1,6 @@
 package com.tic.app.controller;
 
+import java.util.ArrayList;
 import java.util.Locale;
 
 import org.slf4j.Logger;
@@ -44,18 +45,25 @@ public class SmsController {
 		
 		rsvVO.setPhoneNumber(to);
 		
-		if (smsController.checkNumber(rsvVO) == true) {			
+		ArrayList<RsvVO> result = rsvMapper.selectNumber(rsvVO);
+		if(result.isEmpty()) {
+			smsController.regNumber(rsvVO);
 			smsSendServiceImpl.sendSMS(to, rsvVO);
-			return "redirect:/sms";
+			logger.info("Unregistered number.");
+		} else {
+			//smsSendServiceImpl.sendSMS(to, rsvVO);
+			Object object = rsvMapper.selectAllRegedNumber(rsvVO);
+			logger.info("Get query result ::: ", object);
+			logger.info("Registered number.");
 		}
 		
-		return "NotFound404";
+		return "redirect:/sms";
 	}
 	
+	/** @unused */
 	public boolean checkNumber(RsvVO rsvVO) {
 		logger.info("SmsController.checkNumber");
 		boolean prcsCmplt = false;
-		
 		
 		int chkExistNum;
 		try {
