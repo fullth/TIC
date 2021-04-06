@@ -4,8 +4,8 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- mac tic프로젝트에 맞게 namespace 수정 -->
-<mapper namespace="com.errbod.temp.mapper.ErrBoardMapper">
-	<select id="selectErrList" resultType="com.errbod.temp.domain.ErrBoard"> 
+<mapper namespace="com.tic.app.mapper.ErrBoardMapper">
+	<select id="selectErrList" resultType="com.tic.app.model.ErrBoard"> 
 		SELECT idx
 			 , title
 			 , contents

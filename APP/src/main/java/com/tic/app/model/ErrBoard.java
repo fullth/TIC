@@ -1,3 +1,5 @@
+package com.tic.app.model;
+
 public class ErrBoard {
 	
 	private int idx;
