@@ -1,3 +1,5 @@
+package com.tic.app.controller;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -6,8 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.errbod.temp.domain.ErrBoard;
-import com.errbod.temp.mapper.ErrBoardMapper;
+import com.tic.app.mapper.ErrBoardMapper;
+import com.tic.app.model.ErrBoard;
 
 @Controller
 public class ErrorBoardController {
@@ -25,6 +27,6 @@ public class ErrorBoardController {
 		
 		model.addAttribute("boards", board);
 		
-		return "test";
+		return "errBoard";
 	}
 }
